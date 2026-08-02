@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  npm registry search for the @taxbit scope (registry.npmjs.org). PyPI has no
+  taxbit package (404). No public GitHub org named "taxbit" was found. These are
+  the first-party client libraries TaxBit publishes for its embeddable Tax
+  Documentation / in-app experiences; the server REST API is documented at
+  https://apidocs.taxbit.com and is not accompanied by a published server SDK.
+description: >-
+  First-party TaxBit client libraries published to npm under the @taxbit scope.
+  These power the browser / React "Tax Documentation" (W-8/W-9) collection
+  experience described in the docs (How the SDK works, Component and Hook
+  Reference). See components/taxbit-components.yml for the embeddable UI surface.
+registries:
+  npm_scope: "@taxbit"
+  pypi: none
+  github_org: none
+packages:
+  - name: "@taxbit/react-sdk"
+    registry: npm
+    official: true
+    latest: 4.1.0
+    language: javascript
+    description: "Taxbit Tax Documentation — React SDK (components + hooks for W-8/W-9 collection)."
+    url: https://www.npmjs.com/package/@taxbit/react-sdk
+  - name: "@taxbit/browser"
+    registry: npm
+    official: true
+    latest: 2.0.3
+    language: javascript
+    description: "An SDK to implement TaxBit technology on your website (browser SDK)."
+    url: https://www.npmjs.com/package/@taxbit/browser
+  - name: "@taxbit/js"
+    registry: npm
+    official: true
+    latest: 0.0.5
+    language: javascript
+    description: "TaxBit JS core library."
+    url: https://www.npmjs.com/package/@taxbit/js
+  - name: "@taxbit/utilities"
+    registry: npm
+    official: true
+    latest: 7.2.0
+    language: javascript
+    description: "Taxbit Utilities (shared helpers used by the TaxBit SDKs)."
+    url: https://www.npmjs.com/package/@taxbit/utilities
+docs:
+  sdk_overview: https://apidocs.taxbit.com/docs/how-the-sdk-works
+  component_hook_reference: https://apidocs.taxbit.com/docs/component-and-hook-reference

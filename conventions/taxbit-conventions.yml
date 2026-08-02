@@ -1,0 +1,83 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://apidocs.taxbit.com (Getting Started, Accessing the API, Integration
+  Steps) and the API reference operation descriptions captured in
+  llms/taxbit-llms.txt. The OpenAPI spec is served by ReadMe behind auth and
+  could not be downloaded, so pagination/error-envelope internals that are not
+  stated in the published docs are left null rather than guessed.
+description: >-
+  Cross-cutting request/response conventions for the TaxBit REST API: bearer
+  auth, idempotent upserts keyed by the caller's external IDs, rate limiting,
+  and asynchronous report generation.
+api_style: REST over HTTPS, JSON request/response
+docs_host: https://apidocs.taxbit.com
+base_url_pattern: https://api.<environment>.enterprise.taxbit.com
+base_url_examples:
+  - https://api.multi1.enterprise.taxbit.com
+  - https://api.eutax1.enterprise.taxbit.com
+
+authentication:
+  scheme: Bearer token (tenant-scoped primary; account-owner-scoped for tax docs)
+  detail: authentication/taxbit-authentication.yml
+  docs: https://apidocs.taxbit.com/reference/auth-token
+
+idempotency:
+  supported: true
+  mechanism: client-supplied external identifier (upsert), not a request header
+  detail: >-
+    Writes are keyed by the caller's own unique identifier so retries are
+    idempotent create-or-update operations rather than duplicate inserts:
+    POST /transactions/{external_id} "Send (create or update) transactions ...
+    using your system's unique identifier"; PUT .../form-items/{form-item-id}
+    "Insert or Update ... If it does not exist, one is created"; POST
+    /form-items/batch "Inserts or Updates ... If they do not exist, they are
+    created". Account/Account Owner reads and updates also address resources by
+    the customer's system identifier.
+  docs: https://apidocs.taxbit.com/reference/post_transactions-external-id
+
+rate_limits:
+  default: 50 requests per second (RPS)
+  scope_note: >-
+    Stated for Create Account Owner ("By default, you can use this API at 50
+    requests per second"). Higher RPS is available on request via your
+    Implementation Manager.
+  increase: Contact your TaxBit Implementation Manager.
+  docs: https://apidocs.taxbit.com/reference/post_account-owners
+
+async_operations:
+  pattern: trigger + poll
+  detail: >-
+    Inventory Summary reports are asynchronous: POST /reports/inventory-summary
+    returns a reportId, then GET /reports/inventory-summary/{reportId} is polled
+    for status and download. Inventory has documented SLAs and asynchronous
+    behavior.
+  docs:
+    reports: https://apidocs.taxbit.com/reference/post_reports-inventory-summary
+    inventory_slas: https://apidocs.taxbit.com/docs/inventory-slas
+
+pagination:
+  style: null
+  note: Not documented in the public (non-spec) docs; the OpenAPI spec is auth-gated.
+
+error_envelope:
+  media_type: null
+  rfc9457: null
+  note: Error schema not published outside the auth-gated OpenAPI spec.
+
+versioning:
+  scheme: named data-model versions
+  detail: >-
+    The reference exposes versioned data-model pages (e.g. "Transaction Data
+    Model - current") and a "deprecated" spec alongside the primary API spec.
+  detail_file: lifecycle/taxbit-lifecycle.yml
+
+webhooks:
+  supported: true
+  detail: asyncapi/taxbit-webhooks.yml
+  docs: https://apidocs.taxbit.com/docs/webhooks-guide
+
+related:
+  authentication: authentication/taxbit-authentication.yml
+  lifecycle: lifecycle/taxbit-lifecycle.yml
+  data_model: data-model/taxbit-data-model.yml

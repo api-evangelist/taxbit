@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: >-
+  https://apidocs.taxbit.com/mcp — probed live. A hosted MCP endpoint responds
+  at this URL (ReadMe-hosted developer MCP over streamable HTTP). An
+  unauthenticated JSON-RPC initialize returns HTTP 401 with
+  {"error":{"code":-32001,"message":"Authorization required"}}, so the server is
+  real but auth-gated. This is the ReadMe documentation MCP that fronts the
+  TaxBit API reference; it is not a separately branded TaxBit product server.
+server:
+  name: taxbit-apidocs
+  transport: http
+  url: https://apidocs.taxbit.com/mcp
+  auth: required
+  auth_detail: >-
+    JSON-RPC initialize without credentials returns 401 "Authorization
+    required" (JSON-RPC error -32001).
+  hosted_by: ReadMe (readme.io developer hub MCP)
+reserved_tools_advertised:
+  # tool names surfaced by the ReadMe hub config for this project (readme reservedWords.tools)
+  - execute-request
+  - get-endpoint
+  - get-server-variables
+  - list-endpoints
+  - search-endpoints
+  - search
+  - fetch
+notes: >-
+  Because the endpoint is auth-gated, the concrete per-operation tool list was
+  not enumerable anonymously. The underlying API operations that these tools
+  proxy are catalogued in llms/taxbit-llms.txt and skills/.

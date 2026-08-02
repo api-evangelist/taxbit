@@ -1,0 +1,123 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from the TaxBit API reference operation set and their nested resource
+  paths (llms/taxbit-llms.txt) plus the published "Filer Data Model" and
+  "Transaction Data Model" reference pages. Relationships are inferred from URL
+  containment (e.g. /accounts/{id}/transactions) and operation descriptions
+  ("Accounts associated with an account owner", "Filer ... has Accounts
+  associated with it"). The OpenAPI $ref graph itself is auth-gated and was not
+  available, so field-level detail is intentionally light.
+description: >-
+  Entity-relationship graph for the TaxBit tax-compliance API: how Filers,
+  Account Owners, Accounts, Transactions, Inventory, Gains, Tax Documentation
+  and Form Items relate.
+docs:
+  filer_data_model: https://taxbitsupport.zendesk.com/hc/en-us/articles/32638768460429-Filer-Data-Model
+  transaction_data_model: https://apidocs.taxbit.com/reference/transaction-data-model-current
+entities:
+  - name: Filer
+    description: Legal entity responsible for filing tax forms; can be a default filer.
+  - name: AccountOwner
+    description: A person/entity that owns accounts; subject of tax documentation and TIN validation.
+  - name: Account
+    description: An account belonging to an account owner; the anchor for transactions, inventory, gains and documents.
+  - name: Transaction
+    description: A ledger event ingested by external_id; drives inventory and gains.
+  - name: TransferLot
+    description: User-entered cost-basis lots attached to a transfer-in/out transaction.
+  - name: InventoryLot
+    description: Undisposed lots for an asset within an account.
+  - name: Gain
+    description: Realized gain/loss line items (IRS Form 8949 / 1099-B).
+  - name: DispositionMethod
+    description: Accounting method (FIFO/LIFO/HIFO/LOFO) history for an account or filer.
+  - name: TaxDocumentation
+    description: W-9 / W-8BEN / W-8BEN-E / self-certification data for an account owner.
+  - name: Document
+    description: Generated tax document / PDF (released tax documents, tax-doc PDFs).
+  - name: FormItem
+    description: Reportable form line item for a user, keyed by external id.
+  - name: USTINValidation
+    description: US TIN + name validation request/result for an account owner.
+  - name: Report
+    description: Asynchronous inventory-summary report identified by reportId.
+  - name: Asset
+    description: The crypto/asset referenced by inventory and transactions (asset_id / asset_code).
+relationships:
+  - from: Account
+    type: belongs_to
+    to: AccountOwner
+    via: account_owner
+    evidence: "Accounts associated with an account owner."
+  - from: Account
+    type: belongs_to
+    to: Filer
+    via: filer
+    evidence: "A Filer cannot be deleted if it is the designated default or has Accounts associated with it."
+  - from: Filer
+    type: has_many
+    to: Account
+  - from: AccountOwner
+    type: has_many
+    to: Account
+  - from: AccountOwner
+    type: has_many
+    to: TaxDocumentation
+    via: account_owner_id
+    evidence: "/account-owners/{id}/tax-documentation-data"
+  - from: AccountOwner
+    type: has_one
+    to: USTINValidation
+    via: account_owner_id
+    evidence: "/account-owners/{id}/us-tin-validation-status"
+  - from: Account
+    type: has_many
+    to: Transaction
+    via: account_id
+    evidence: "/accounts/{id}/transactions"
+  - from: Transaction
+    type: has_many
+    to: TransferLot
+    via: transaction_id
+    evidence: "/transfer-lots/transactions/{transaction-id}"
+  - from: Account
+    type: has_many
+    to: InventoryLot
+    via: account_id
+    evidence: "/inventory (per account, per asset)"
+  - from: InventoryLot
+    type: belongs_to
+    to: Asset
+    via: asset_id
+    evidence: "Either asset_id or asset_code must be provided."
+  - from: Account
+    type: has_many
+    to: Gain
+    via: account_id
+    evidence: "/gains, /gains/breakdown, /gains/summary per account"
+  - from: Account
+    type: has_many
+    to: DispositionMethod
+    via: account_id
+    evidence: "/accounts/{id}/disposition-methods/history"
+  - from: Filer
+    type: has_many
+    to: DispositionMethod
+    via: filer_id
+    evidence: "/filers/{id}/disposition-methods/history"
+  - from: Account
+    type: has_many
+    to: Document
+    via: account_id
+    evidence: "/accounts/{id}/tax-documents"
+  - from: AccountOwner
+    type: has_many
+    to: Document
+    via: account_owner_id
+    evidence: "/account-owners/{id}/tax-documentation-data/document/{document-id}"
+  - from: FormItem
+    type: belongs_to
+    to: AccountOwner
+    via: user_id
+    evidence: "/users/{user-id}/form-items"

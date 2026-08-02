@@ -1,0 +1,69 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://apidocs.taxbit.com/reference/auth-token,
+  https://apidocs.taxbit.com/reference/post_oauth-token,
+  https://apidocs.taxbit.com/reference/post_oauth-account-owner-token, and
+  https://apidocs.taxbit.com/docs/accessing-the-api. The OpenAPI spec is served
+  by ReadMe behind auth and could not be downloaded, so this profile is built
+  from the published auth documentation rather than derived from securitySchemes.
+description: >-
+  The TaxBit APIs authenticate every request with a bearer token. Two token
+  scopes exist: a tenant-scoped bearer token (the primary mechanism) and an
+  account-owner-scoped bearer token used for tax-documentation (W-8/W-9) flows.
+  The tenant-scoped token is obtained by POSTing OAuth-style credentials
+  (client_id, client_secret, tenant_id) from the Taxbit Dashboard Developer
+  Settings; it is valid for 24 hours.
+type: bearer
+api_host_pattern: https://api.<environment>.enterprise.taxbit.com
+api_host_examples:
+  - https://api.multi1.enterprise.taxbit.com
+  - https://api.eutax1.enterprise.taxbit.com
+credentials:
+  fields: [client_id, client_secret, tenant_id]
+  source: Taxbit Dashboard — Developer Settings page
+schemes:
+  - id: tenant_scoped_bearer_token
+    type: http
+    scheme: bearer
+    primary: true
+    mint_endpoint: post_oauth-token
+    mint_url: https://apidocs.taxbit.com/reference/post_oauth-token
+    lifetime: 24 hours
+    covers:
+      - Account Owners
+      - Accounts
+      - Transactions
+      - Assets
+      - Documents
+      - Form Items
+      - Gains
+      - Inventory
+      - Reports
+      - Filers
+      - Disposition Methods
+      - Transfer Lots
+      - Tax Treaty Rates
+      - Real-Time TIN Validation
+    description: >-
+      Primary authorization mechanism. Exchange client credentials for a
+      tenant-scoped bearer token, valid for 24 hours, then send it as
+      Authorization: Bearer <token> on API requests.
+  - id: account_owner_scoped_bearer_token
+    type: http
+    scheme: bearer
+    primary: false
+    mint_endpoint: post_oauth-account-owner-token
+    mint_url: https://apidocs.taxbit.com/reference/post_oauth-account-owner-token
+    covers:
+      - Account Owners
+      - Tax Documentation
+    description: >-
+      Authorizes submitting and accessing Tax Documentation on behalf of a
+      specific account owner. Designed for the W-8/W-9 solution and the embedded
+      Tax Documentation SDK (see components/taxbit-components.yml). Handle token
+      expiration per https://apidocs.taxbit.com/docs/handling-token-expiration.
+docs:
+  overview: https://apidocs.taxbit.com/reference/auth-token
+  accessing_the_api: https://apidocs.taxbit.com/docs/accessing-the-api
+  token_expiration: https://apidocs.taxbit.com/docs/handling-token-expiration

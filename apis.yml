@@ -1,9 +1,30 @@
 aid: taxbit
 name: TaxBit
-description: TaxBit is a company surfaced as a portfolio company of insight-partners, ivp, paradigm, ribbit-capital,
-  sapphire-ventures and added to the API Evangelist network as a stub for enrichment. This profile is
-  a lead awaiting the enrichment pipeline.
+description: >-
+  TaxBit is an end-to-end tax compliance and information-reporting platform for
+  the digital economy, serving enterprises and governments across 70+
+  jurisdictions and 140+ countries. Its API turns transaction data into accurate
+  cost basis, realized gains (IRS Form 8949 / 1099-B), and regulatory filings,
+  and handles tax-documentation collection (W-9, W-8BEN, W-8BEN-E,
+  self-certification), US TIN validation, DAC7 digital-platform-seller
+  reporting, and CARF/DAC8 crypto-asset reporting. The REST API (documented at
+  apidocs.taxbit.com) authenticates with tenant-scoped and account-owner-scoped
+  bearer tokens, and TaxBit ships embeddable React/browser SDKs for collecting
+  tax documentation directly inside customer apps.
 url: https://raw.githubusercontent.com/api-evangelist/taxbit/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://files.readme.io/e2c1133-small-taxbit-dark.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -12,14 +33,45 @@ x-backed-by:
 - paradigm
 - ribbit-capital
 - sapphire-ventures
-x-tier: stub
+x-tier: profiled
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Tax
+- Tax Compliance
+- Information Reporting
+- Digital Assets
+- Cryptocurrency
+- Accounting
+- Regtech
+apis:
+- name: TaxBit API
+  description: >-
+    REST API for tax compliance and information reporting: account owners,
+    accounts, transactions, inventory, realized gains, tax documentation
+    (W-8/W-9), filers, form items, disposition methods, transfer lots, US TIN
+    validation and tax treaty rates. Bearer-token authenticated; hosts are
+    environment-specific under api.<environment>.enterprise.taxbit.com.
+  humanURL: https://apidocs.taxbit.com/docs/getting-started
+  baseURL: https://api.multi1.enterprise.taxbit.com
+  tags:
+  - Tax
+  - Information Reporting
+  - Digital Assets
+  properties:
+  - type: Documentation
+    url: https://apidocs.taxbit.com/docs/getting-started
+  - type: APIReference
+    url: https://apidocs.taxbit.com/reference
+  - type: Authentication
+    url: authentication/taxbit-authentication.yml
+  - type: Conventions
+    url: conventions/taxbit-conventions.yml
+  - type: DataModel
+    url: data-model/taxbit-data-model.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -28,3 +80,60 @@ maintainers:
 common:
 - type: Website
   url: https://taxbit.com/
+- type: DeveloperPortal
+  url: https://apidocs.taxbit.com/docs/getting-started
+- type: Documentation
+  url: https://apidocs.taxbit.com/docs/getting-started
+- type: APIReference
+  url: https://apidocs.taxbit.com/reference
+- type: GettingStarted
+  url: https://apidocs.taxbit.com/docs/getting-started
+- type: Support
+  url: https://taxbitsupport.zendesk.com/
+- type: HelpCenter
+  url: https://www.taxbit.com/support
+- type: Blog
+  url: https://www.taxbit.com/blogs
+- type: StatusPage
+  url: https://status.taxbit.com/
+- type: TermsOfService
+  url: https://www.taxbit.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.taxbit.com/privacy-policy
+- type: TrustCenter
+  url: security/taxbit-trust-center.yml
+- type: DomainSecurity
+  url: security/taxbit-domain-security.yml
+- type: LLMsTxt
+  url: llms/taxbit-llms.txt
+- type: MCPServer
+  url: mcp/taxbit-mcp.yml
+- type: Authentication
+  url: authentication/taxbit-authentication.yml
+- type: Conventions
+  url: conventions/taxbit-conventions.yml
+- type: Idempotency
+  url: conventions/taxbit-conventions.yml
+- type: Conformance
+  url: conformance/taxbit-conformance.yml
+- type: Compliance
+  url: conformance/taxbit-conformance.yml
+- type: Lifecycle
+  url: lifecycle/taxbit-lifecycle.yml
+- type: Packages
+  url: packages/taxbit-packages.yml
+- type: SDKs
+  url: packages/taxbit-packages.yml
+- type: Components
+  url: components/taxbit-components.yml
+- type: DataModel
+  url: data-model/taxbit-data-model.yml
+- type: Webhooks
+  url: asyncapi/taxbit-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 13
+  pass: local-v1

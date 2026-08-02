@@ -1,0 +1,121 @@
+# Taxbit Documentation
+
+> Taxbit's API provides industry-leading tax compliance features and functionality.
+
+## Guides
+- [Getting Started](https://apidocs.taxbit.com/docs/getting-started.md)
+- [Prerequisites and Requirements](https://apidocs.taxbit.com/docs/prerequisites-and-requirements-2.md)
+- [Integration Steps](https://apidocs.taxbit.com/docs/integration-steps-2.md)
+- [Access the API](https://apidocs.taxbit.com/docs/accessing-the-api.md)
+- [Set up Account Owners and Accounts](https://apidocs.taxbit.com/docs/setting-up-account-owners-and-accounts.md)
+- [Send Transaction or Form Item Data](https://apidocs.taxbit.com/docs/send-transaction-or-form-item-data.md)
+- [Frequently Asked Questions](https://apidocs.taxbit.com/docs/frequently-asked-questions.md)
+- [Post-Integration](https://apidocs.taxbit.com/docs/post-integration.md)
+- [How the SDK works](https://apidocs.taxbit.com/docs/how-the-sdk-works.md)
+- [Integration Guide](https://apidocs.taxbit.com/docs/integration-guide.md)
+- [Handling token expiration](https://apidocs.taxbit.com/docs/handling-token-expiration.md): Detect and recover from Account Owner token expiration in the SDK.
+- [Curing Integration Guide](https://apidocs.taxbit.com/docs/curing-integration-guide.md): Resolve specific W-8 validation issues with a focused component — without re-collecting the full form.
+- [Reading curing statuses](https://apidocs.taxbit.com/docs/reading-curing-statuses.md): Read OPEN, IN_REVIEW, and RESOLVED curing statuses from the hook, server-side, and webhooks.
+- [Component and Hook Reference](https://apidocs.taxbit.com/docs/component-and-hook-reference.md)
+- [Tax Documentation FAQ](https://apidocs.taxbit.com/docs/tax-documentation-guide.md)
+- [Remediation FAQ](https://apidocs.taxbit.com/docs/remediation-faq.md)
+- [Curing Documentation](https://apidocs.taxbit.com/docs/curing-documentation.md): Additional Information & Best Practices
+- [Overview](https://apidocs.taxbit.com/docs/inventory-intro.md)
+- [Setting Disposition Methods](https://apidocs.taxbit.com/docs/setting-dispo-methods.md)
+- [Supported Disposition Methods](https://apidocs.taxbit.com/docs/gains-accounting-method.md)
+- [Creating Inventory](https://apidocs.taxbit.com/docs/creating-inventory.md)
+- [Consuming Inventory](https://apidocs.taxbit.com/docs/consuming-inventory.md)
+- [Consuming Gains](https://apidocs.taxbit.com/docs/consuming-gains.md)
+- [Transfers](https://apidocs.taxbit.com/docs/transfers.md)
+- [User-Provided Cost Basis](https://apidocs.taxbit.com/docs/user-provided-cost-basis.md)
+- [Internal Personal Transfers](https://apidocs.taxbit.com/docs/internal-personal-transfers.md)
+- [Gifts](https://apidocs.taxbit.com/docs/gifts.md)
+- [Inheritance](https://apidocs.taxbit.com/docs/inheritance.md)
+- [SLAs and Asynchronous Behavior](https://apidocs.taxbit.com/docs/inventory-slas.md)
+- [Powering In-App Experiences](https://apidocs.taxbit.com/docs/tax-center.md)
+- [Real-Time Inventory](https://apidocs.taxbit.com/docs/real-time-inventory.md)
+- [Displaying Unrealized Gain/Loss](https://apidocs.taxbit.com/docs/displaying-unrealized-gainloss.md)
+- [Tax Loss Harvesting](https://apidocs.taxbit.com/docs/tax-loss-harvesting.md)
+- [Overview](https://apidocs.taxbit.com/docs/carf-dac8.md)
+- [Webhooks Guide](https://apidocs.taxbit.com/docs/webhooks-guide.md)
+- [Overview](https://apidocs.taxbit.com/docs/dac7-introduction.md)
+- [Seller Data Collection](https://apidocs.taxbit.com/docs/seller-data-collection.md)
+- [Sending Income Payment Transactions](https://apidocs.taxbit.com/docs/dac7-sending-income-payment-transactions.md)
+- [Retrieving Recipient Copies](https://apidocs.taxbit.com/docs/retrieiving-dac7-recipient-copies.md)
+- [Overview](https://apidocs.taxbit.com/docs/payments-overview.md)
+- [Account Data Collection](https://apidocs.taxbit.com/docs/payments-accounts-data.md)
+- [Sending Payment Transactions](https://apidocs.taxbit.com/docs/payment-transactions.md)
+- [Retrieving Tax Forms](https://apidocs.taxbit.com/docs/retrieiving-dac7-recipient-copies-copy.md)
+
+## API Reference
+- [Auth Token](https://apidocs.taxbit.com/reference/auth-token.md)
+- [Request a Tenant Scoped Bearer Token](https://apidocs.taxbit.com/reference/post_oauth-token.md): Take this action to request a tenant scoped bearer token. Once you receive a tenant scoped bearer token, it is valid for 24 hours.
+- [Filers](https://apidocs.taxbit.com/reference/filers.md)
+- [Create a Filer](https://apidocs.taxbit.com/reference/post_filers.md): Create a new Filer to represent a legal entity responsible for filing tax forms. See our [Filer Data Model](https://taxbitsupport.zendesk.com/hc/en-us/articles/32638768460429-Filer-Data-Model) for details on required fields based on form type.
+- [Get All Filers](https://apidocs.taxbit.com/reference/get_filers.md): Retrieve all Filers associated with your organization.
+- [Get a Filer](https://apidocs.taxbit.com/reference/get_filers-id.md): Get Filer data by its unique identifier.
+- [Update a Filer](https://apidocs.taxbit.com/reference/patch_filers-id.md): Update an existing Filer by its unique identifier. All fields are optional on update. Additional fields may be required to generate specific form types. See our [Filer Data Model](https://taxbitsupport.zendesk.com/hc/en-us/articles/32638768460429-Filer-Data-Model) for details on required fields based on form type.
+- [Delete a Filer](https://apidocs.taxbit.com/reference/delete_filers-id.md): Delete an existing Filer by its unique identifier. A Filer cannot be deleted if it is the designated default or has Accounts associated with it.
+- [Account Owners](https://apidocs.taxbit.com/reference/account-owners.md)
+- [Create a Taxbit Account Owner](https://apidocs.taxbit.com/reference/post_account-owners.md): Create an Account Owner to link with accounts in Taxbit's system. By default, you can use this API at 50 requests per second (RPS). If your use case requires a higher RPS, please contact your Implementation Manager.
+- [Update an Existing Taxbit Account Owner](https://apidocs.taxbit.com/reference/patch_account-owners-id.md): Update an existing Account Owner in Taxbit's system.
+- [Get an Existing Taxbit Account Owner](https://apidocs.taxbit.com/reference/get_account-owners-id.md): Get data stored for an Account Owner that exists in Taxbit's system (as an object).
+- [Get an Existing Taxbit Account Owner's US TIN Validation Status](https://apidocs.taxbit.com/reference/get_account-owners-id-us-tin-validation-status.md): Get US TIN Validation Status for an Account Owner in Taxbit's system.
+- [Accounts](https://apidocs.taxbit.com/reference/accounts.md)
+- [Create an Account](https://apidocs.taxbit.com/reference/post_accounts.md): Create accounts associated with an account owner in Taxbit's system. Accounts enable sending transactions, accessing inventory details, and retrieving tax-related documents associated with these accounts.
+- [Update an Account](https://apidocs.taxbit.com/reference/patch_accounts-id.md): Update an Account's data using your system's unique identifier for the Account.
+- [Get an existing Account](https://apidocs.taxbit.com/reference/get_accounts-id.md): Get Account data using your system's unique identifier for the Account.
+- [Submit W-9 Tax Documentation Data](https://apidocs.taxbit.com/reference/post_account-owners-id-tax-documentation-data-w-9.md): Submit W-9 tax documentation data for an account owner. This endpoint allows you to collect and store W-9 form information required for tax reporting and compliance.
+- [Submit W-8BEN Tax Documentation Data](https://apidocs.taxbit.com/reference/post_account-owners-id-tax-documentation-data-w-8ben.md): Submit W-8BEN tax documentation data for an account owner. This endpoint allows you to collect and store W-8BEN form information required for tax reporting and compliance.
+- [Submit W-8BEN-E Tax Documentation Data](https://apidocs.taxbit.com/reference/post_account-owners-id-tax-documentation-data-w-8ben-e.md): Submit W-8BEN-E tax documentation data for an account owner. This endpoint allows you to collect and store W-8BEN-E form information required for tax reporting and compliance.
+- [Submit Self-Certification Tax Documentation Data](https://apidocs.taxbit.com/reference/post_account-owners-id-tax-documentation-data-self-certification.md): Submit self-certification tax documentation data for an account owner. This endpoint allows you to collect and store self-certification form information required for tax reporting and compliance.
+- [Retrieve Tax Documentation Data](https://apidocs.taxbit.com/reference/get_account-owners-id-tax-documentation-data.md): Returns the Tax Documentation Data for an Account Owner
+- [Retrieve Tax Documentation Status](https://apidocs.taxbit.com/reference/get_account-owners-id-tax-documentation-status.md): Returns the latest tax documentation status for an account owner across all form types (W-9/W-8, Digital Platform Seller, and Self-Certification).
+- [Generate Tax Documentation Document](https://apidocs.taxbit.com/reference/post_account-owners-id-tax-documentation-data-document.md): Creates a PDF document for a specified tax documentation type for an Account Owner
+- [Retrieve Tax Documentation Document by ID](https://apidocs.taxbit.com/reference/get_account-owners-id-tax-documentation-data-document-document-id.md): Returns a generated PDF document by its ID for an Account Owner
+- [Get Tax Treaty Rates](https://apidocs.taxbit.com/reference/get_tax-treaty-rates.md): Returns tax treaty withholding rates for a specified country, including both general rates and special rates with treaty article references for interest, dividends, and other income.
+- [Real-Time TIN Validation](https://apidocs.taxbit.com/reference/real-time-tin-validation.md)
+- [Validate a US TIN and name](https://apidocs.taxbit.com/reference/post_validations-us-tin.md): Send a US TIN and name for validation
+- [Get US TIN Validation results](https://apidocs.taxbit.com/reference/get_validations-us-tin-validation-id.md): Retrieves the validation result for a previously submitted US TIN and name combination using its US TIN validation ID.
+- [Transactions](https://apidocs.taxbit.com/reference/transactions.md)
+- [Get Account Transactions From Taxbit](https://apidocs.taxbit.com/reference/get_accounts-id-transactions.md): Retrieve all transactions associated with a given account using your system's unique identifier for the Account.
+- [Send a Transaction to Taxbit](https://apidocs.taxbit.com/reference/post_transactions-external-id.md): Send (create or update) transactions to Taxbit using your system's unique identifier for the Transaction.
+- [Get a Transaction From Taxbit](https://apidocs.taxbit.com/reference/get_transactions-external-id-id-1.md): Retrieve a transaction that was previously ingested by Taxbit using your system's unique identifier for the Transaction.
+- [Delete a Transaction](https://apidocs.taxbit.com/reference/delete_transactions-external-id-id-1.md): Delete a transaction using your system's unique identifier.
+- [Aggregate income data for a given time period](https://apidocs.taxbit.com/reference/get_accounts-id-income.md): Retrieve a summary of total income earned by a specific account using Account ID.
+- [Disposition Methods](https://apidocs.taxbit.com/reference/disposition-methods.md)
+- [Create Account Disposition Methods](https://apidocs.taxbit.com/reference/post_accounts-id-disposition-methods-history.md): Create Disposition Methods for a given account.
+- [Update a Disposition Method History Record](https://apidocs.taxbit.com/reference/patch_accounts-id-disposition-methods-history-history-id.md): Update a disposition method history record for a given account.
+- [Delete a Disposition Method History Record](https://apidocs.taxbit.com/reference/delete_accounts-id-disposition-methods-history-history-id.md): Delete a disposition method history record for a given account.
+- [Get Disposition Methods for an Account](https://apidocs.taxbit.com/reference/get_accounts-id-disposition-methods-history.md): Retrieve all disposition methods for a given account.
+- [Get Disposition Methods for a Filer](https://apidocs.taxbit.com/reference/get_filers-id-disposition-methods-history.md): Retrieve all disposition methods for a given filer.
+- [Inventory](https://apidocs.taxbit.com/reference/inventory.md)
+- [Inventory Lots and Summary for a Single Asset](https://apidocs.taxbit.com/reference/get_inventory.md): Get a summary and list of undisposed lots for the given asset for a specific account. Either asset_id or asset_code must be provided. Lots will be returned sorted according to the order in which the system will dispose them (by highest cost for HIFO, earliest acquisition date for FIFO, latest acquisition date for LIFO, or lowest cost for LOFO).
+- [List Inventory Summary for all Assets](https://apidocs.taxbit.com/reference/get_inventory-summaries.md): Retrieve the summary of total cost and total quantity for each undisposed asset for a specified account.
+- [Create Transfer Lots](https://apidocs.taxbit.com/reference/post_transfer-lots-transactions-transaction-id.md): Create Transfer Lots with user-entered cost bases for a transfer-in ("deposit") transaction.
+- [Get Transfer Lots](https://apidocs.taxbit.com/reference/get_transfer-lots-transactions-transaction-id.md): Get the Transfer Lots for a transfer-in ("deposit") or transfer-out ("withdraw") transaction.
+- [Delete Transfer Lots](https://apidocs.taxbit.com/reference/delete_transfer-lots-transactions-transaction-id.md): Delete the Transfer Lots associated with a transfer-in ("deposit") transaction.
+- [Get Transfer Lots for Multiple Transactions](https://apidocs.taxbit.com/reference/get_transfer-lots-transactions.md): Get the Transfer Lots for multiple transactions at once. Allows fetching transfer lots for up to 25 deposit or withdraw transactions in a single request. All requested transactions must belong to the same account specified by the account_id parameter.
+- [Reports](https://apidocs.taxbit.com/reference/reports.md)
+- [Trigger an Inventory Summary Report](https://apidocs.taxbit.com/reference/post_reports-inventory-summary.md): Triggers an asynchronous inventory summary report containing per-account asset details such as quantities, cost basis, and average unit cost. Use the [GET /reports/inventory-summary/{reportId}](https://apidocs.taxbit.com/reference/get_reports-inventory-summary-reportId) endpoint to poll for status and download the report once complete.
+- [Gains](https://apidocs.taxbit.com/reference/gains.md)
+- [Get all gains for an account](https://apidocs.taxbit.com/reference/get_gains.md): A detailed collection of all combined cost bases, proceeds, and gains/losses. These correspond to line items on an IRS form 8949 or form 1099-B.
+- [Get Short, Long, and Total Gains](https://apidocs.taxbit.com/reference/get_gains-breakdown.md): Get the user's gains broken into long and short term gains/losses and the total.
+- [Get the User's Total Gains For a Period](https://apidocs.taxbit.com/reference/get_gains-summary.md): Get the user's total gains for a period.
+- [Form Items](https://apidocs.taxbit.com/reference/form-items.md)
+- [Get a Form Item](https://apidocs.taxbit.com/reference/get_users-user-id-form-items-form-item-id.md): Get a form item by id.
+- [Upsert a Form Item](https://apidocs.taxbit.com/reference/put_users-user-id-form-items-form-item-id.md): Insert or Update a form item with the provided external id. If it does not exist, one is created.
+- [Delete a Form Item](https://apidocs.taxbit.com/reference/delete_users-user-id-form-items-form-item-id.md): Delete a form item.
+- [Upsert a Collection of Form Items](https://apidocs.taxbit.com/reference/post_form-items-batch.md): Inserts or Updates the form items with the provided ids. If they do not exist, they are created.
+- [Get all Form Items](https://apidocs.taxbit.com/reference/get_users-user-id-form-items.md): Get all form items within a tax year for a user.
+- [Form Item Aggregates by Document Type](https://apidocs.taxbit.com/reference/get_form-items-aggregates-document-type.md): Retrieve a comprehensive snapshot of form item totals specific to a defined document_type. This API provides total row count, total proceeds, and total cost basis for the specified document type between a start and end date or a start and end disposed date. Only either of the date filters can be used.
+- [Documents](https://apidocs.taxbit.com/reference/documents.md)
+- [Get Released Tax Documents](https://apidocs.taxbit.com/reference/get_accounts-id-tax-documents.md): Retrieve released tax documents associated with a given account using your system's unique identifier for the Account. Returns the latest of each tax document and year by default.
+- [Auth Token](https://apidocs.taxbit.com/reference/auth-token-2.md)
+- [Get an Account Owner Scoped Bearer Token](https://apidocs.taxbit.com/reference/post_oauth-account-owner-token.md): This token serves as the authorization mechanism enabling you to submit and access Tax Documentation on behalf of the account owner. It is specifically designed for use with Account Owner and Tax Documentation endpoints and is primarily employed by customers using our W8/W9 solution.
+- [Tax Documentation](https://apidocs.taxbit.com/reference/tax-documentation-3.md)
+- [Retrieve Tax Documentation Data](https://apidocs.taxbit.com/reference/get_tax-documentation-data.md): Returns the Tax Documentation Data for an Account Owner
+- [Retrieve Tax Documentation Status](https://apidocs.taxbit.com/reference/get_tax-documentation-status-3.md): Returns the latest tax documentation status for an account owner across all form types (W-9/W-8, Digital Platform Seller, and Self-Certification).
+- [Generate Tax Documentation Document](https://apidocs.taxbit.com/reference/post_tax-documentation-data-document.md): Creates a PDF document for a specified tax documentation type for an Account Owner
+- [Retrieve Tax Documentation Document by ID](https://apidocs.taxbit.com/reference/get_tax-documentation-data-document-document-id.md): Returns a generated PDF document by its ID for an Account Owner
+- [Transaction Data Model](https://apidocs.taxbit.com/reference/transaction-data-model-current.md)

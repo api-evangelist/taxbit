@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://status.taxbit.com (public status page), the API reference structure
+  (versioned data-model pages + a "deprecated" OpenAPI spec) captured in
+  llms/taxbit-llms.txt, and https://apidocs.taxbit.com/docs/inventory-slas. A
+  formal RFC 8594 Sunset/Deprecation-header policy was not found in the public
+  docs (the OpenAPI spec is auth-gated).
+description: >-
+  Versioning, deprecation and availability signals for the TaxBit API.
+versioning:
+  scheme: named data-model versions
+  mechanism: >-
+    The reference publishes versioned data-model pages (e.g. "Transaction Data
+    Model - current"). A separate "deprecated" OpenAPI spec is maintained
+    alongside the primary "api" spec and an "embedded-api" spec.
+  docs: https://apidocs.taxbit.com/reference
+deprecation:
+  policy_url: null
+  sunset_header: null
+  evidence: >-
+    A distinct deprecated.json OpenAPI document exists on the ReadMe project,
+    indicating deprecated operations are segregated rather than removed
+    in-place. No public RFC 8594 header policy was located.
+sla:
+  public_uptime_target: null
+  async_slas: https://apidocs.taxbit.com/docs/inventory-slas
+  notes: >-
+    Inventory/report generation is asynchronous with documented SLAs; a numeric
+    platform uptime SLA is handled via enterprise agreements, not published
+    publicly.
+status_page: https://status.taxbit.com/
+support: https://taxbitsupport.zendesk.com/

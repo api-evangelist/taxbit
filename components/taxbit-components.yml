@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://apidocs.taxbit.com/docs/how-the-sdk-works,
+  https://apidocs.taxbit.com/docs/component-and-hook-reference,
+  https://apidocs.taxbit.com/docs/curing-integration-guide, and the @taxbit npm
+  packages (@taxbit/react-sdk, @taxbit/browser). Distinct from server SDKs:
+  these are client-side embeddable UI surfaces for collecting tax documentation.
+description: >-
+  TaxBit ships embeddable, client-side UI components for collecting and curing
+  tax documentation (W-8/W-9, self-certification) directly inside a customer's
+  own web app. Delivered as a React component + hook library and a browser SDK
+  loader. The loader/runtime binaries live in packages/taxbit-packages.yml.
+families:
+  - family: Tax Documentation (W-8/W-9)
+    description: >-
+      Drop-in flow that collects W-9, W-8BEN, W-8BEN-E and self-certification
+      data from an account owner and reports status back to the host app via a
+      React hook, server-side, and webhooks.
+    loader_libraries:
+      - "@taxbit/react-sdk"
+      - "@taxbit/browser"
+    surfaces:
+      - name: Tax Documentation component + hook
+        type: react-component
+        docs: https://apidocs.taxbit.com/docs/component-and-hook-reference
+      - name: Curing component
+        type: react-component
+        description: >-
+          Focused component to resolve specific W-8 validation issues without
+          re-collecting the full form; exposes OPEN, IN_REVIEW and RESOLVED
+          curing statuses via the hook, server-side, and webhooks.
+        docs: https://apidocs.taxbit.com/docs/curing-integration-guide
+guides:
+  how_the_sdk_works: https://apidocs.taxbit.com/docs/how-the-sdk-works
+  integration_guide: https://apidocs.taxbit.com/docs/integration-guide
+  handling_token_expiration: https://apidocs.taxbit.com/docs/handling-token-expiration
+  reading_curing_statuses: https://apidocs.taxbit.com/docs/reading-curing-statuses
+  powering_in_app_experiences: https://apidocs.taxbit.com/docs/tax-center
+auth_note: >-
+  Client-side components authenticate with an Account Owner Scoped Bearer Token
+  (post_oauth-account-owner-token) minted server-side; see
+  authentication/taxbit-authentication.yml.

@@ -1,0 +1,67 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  Auth documentation (https://apidocs.taxbit.com/reference/auth-token), the API
+  reference operation set (llms/taxbit-llms.txt), the TaxBit Trust Center
+  (https://trust.taxbit.com — SOC 2, ISO 27001, GDPR), and live well-known
+  probes of taxbit.com / apidocs.taxbit.com (all /.well-known/* returned 404).
+description: >-
+  Cross-cutting standards conformance for the TaxBit API and platform. TaxBit is
+  a tax-compliance / information-reporting platform, so the relevant "standards"
+  include IRS/OECD reporting regimes (1099, W-8/W-9, DAC7, CARF/DAC8) in addition
+  to API cross-cutting concerns.
+standards:
+  - id: bearer-token-auth
+    conforms: true
+    evidence: >-
+      All endpoints authenticate with HTTP bearer tokens (tenant-scoped and
+      account-owner-scoped); Authorization required is enforced (MCP endpoint
+      returns 401 when unauthenticated).
+  - id: oauth2
+    conforms: partial
+    evidence: >-
+      Token endpoints are labelled "oauth" (post_oauth-token,
+      post_oauth-account-owner-token) and exchange credentials for bearer
+      tokens, but no OAuth2 metadata/discovery document is published.
+  - id: oidc
+    conforms: false
+    evidence: /.well-known/openid-configuration returns 404 on taxbit.com and apidocs.taxbit.com.
+  - id: rfc8414-oauth-metadata
+    conforms: false
+    evidence: /.well-known/oauth-authorization-server returns 404.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404 on taxbit.com and apidocs.taxbit.com.
+  - id: idempotency
+    conforms: true
+    evidence: >-
+      Idempotent writes via caller-supplied external IDs (create-or-update
+      transactions; upsert form items individually and in batch). See
+      conventions/taxbit-conventions.yml.
+  - id: soc2
+    conforms: true
+    evidence: SOC 2 named on the TaxBit Trust Center (https://trust.taxbit.com).
+  - id: iso27001
+    conforms: true
+    evidence: ISO 27001 named on the TaxBit Trust Center (https://trust.taxbit.com).
+  - id: gdpr
+    conforms: true
+    evidence: GDPR named on the TaxBit Trust Center (https://trust.taxbit.com).
+  - id: irs-1099
+    conforms: true
+    evidence: >-
+      Gains endpoints map to IRS Form 8949 / 1099-B line items; a 1099/Payments
+      information-reporting module is documented (payments-overview).
+  - id: irs-w8-w9
+    conforms: true
+    evidence: >-
+      Dedicated W-9, W-8BEN, W-8BEN-E and self-certification tax-documentation
+      submission endpoints plus US TIN validation.
+  - id: oecd-dac7
+    conforms: true
+    evidence: >-
+      DAC7 digital-platform-seller module (seller data collection, income
+      payment transactions, recipient copies) documented in the guides.
+  - id: oecd-carf-dac8
+    conforms: true
+    evidence: CARF/DAC8 crypto-asset-reporting module documented (carf-dac8).

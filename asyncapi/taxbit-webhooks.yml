@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://apidocs.taxbit.com/docs/webhooks-guide and
+  https://apidocs.taxbit.com/docs/reading-curing-statuses. TaxBit documents an
+  outbound webhook surface but does not publish a machine-readable AsyncAPI
+  document, so this artifact captures the webhook catalog (type: Webhooks)
+  rather than an AsyncAPI spec. Payload schemas are not published outside the
+  auth-gated docs, so event fields are left descriptive.
+type: Webhooks
+description: >-
+  TaxBit sends outbound webhooks so host applications can react to tax-
+  documentation lifecycle changes (notably W-8 "curing" status transitions)
+  without polling. Curing statuses can be read from the client hook,
+  server-side, or via webhooks.
+transport: HTTPS callbacks (webhooks)
+guides:
+  webhooks_guide: https://apidocs.taxbit.com/docs/webhooks-guide
+  reading_curing_statuses: https://apidocs.taxbit.com/docs/reading-curing-statuses
+events:
+  - name: tax-documentation curing status change
+    description: >-
+      Emitted as a W-8 validation ("curing") case transitions between OPEN,
+      IN_REVIEW and RESOLVED states.
+    states: [OPEN, IN_REVIEW, RESOLVED]
+    docs: https://apidocs.taxbit.com/docs/reading-curing-statuses
+notes: >-
+  Additional webhook event types may exist; only the curing-status events are
+  explicitly named in the public documentation. No /asyncapi.yaml was found.

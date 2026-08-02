@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: generated
+source: >-
+  Generated from the real TaxBit API reference operation set
+  (llms/taxbit-llms.txt); every operationId below is a published reference slug,
+  not invented. Grounded in conventions/taxbit-conventions.yml (bearer auth,
+  external-id idempotent upserts, async report polling) and
+  authentication/taxbit-authentication.yml. No provider-published Agent Skills /
+  AGENTS.md were found.
+api: TaxBit API
+docs: https://apidocs.taxbit.com
+skills:
+  - file: taxbit-onboard-and-collect-tax-documentation.md
+    name: Onboard an account owner and collect tax documentation
+    operations:
+      - post_account-owners
+      - post_accounts
+      - post_oauth-account-owner-token
+      - post_account-owners-id-tax-documentation-data-w-9
+      - post_account-owners-id-tax-documentation-data-w-8ben
+      - get_account-owners-id-tax-documentation-status
+      - get_account-owners-id-us-tin-validation-status
+  - file: taxbit-ingest-transactions-and-report-gains.md
+    name: Ingest transactions and report realized gains
+    operations:
+      - post_transactions-external-id
+      - get_accounts-id-transactions
+      - post_accounts-id-disposition-methods-history
+      - get_inventory
+      - get_gains
+      - get_gains-summary
+      - post_reports-inventory-summary
+      - get_reports-inventory-summary-reportId
