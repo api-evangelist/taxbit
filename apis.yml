@@ -12,6 +12,17 @@ description: >-
   bearer tokens, and TaxBit ships embeddable React/browser SDKs for collecting
   tax documentation directly inside customer apps.
 url: https://raw.githubusercontent.com/api-evangelist/taxbit/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
