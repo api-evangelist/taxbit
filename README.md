@@ -64,6 +64,107 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-TaxBit is a company surfaced as a portfolio company of insight-partners, ivp, paradigm, ribbit-capital, sapphire-ventures and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+TaxBit is an end-to-end tax compliance and information-reporting platform for the digital economy, serving enterprises and governments across 70+ jurisdictions and 140+ countries. Its API turns transaction data into accurate cost basis, realized gains (IRS Form 8949 / 1099-B), and regulatory filings, and handles tax-documentation collection (W-9, W-8BEN, W-8BEN-E, self-certification), US TIN validation, DAC7 digital-platform-seller reporting, and CARF/DAC8 crypto-asset reporting. The REST API (documented at apidocs.taxbit.com) authenticates with tenant-scoped and account-owner-scoped bearer tokens, and TaxBit ships embeddable React/browser SDKs for collecting tax documentation directly inside customer apps.
 
-Backed by: insight-partners, ivp, paradigm, ribbit-capital, sapphire-ventures — https://taxbit.com/
+**Areas:** Company · Tax · Tax Compliance · Information Reporting · Digital Assets · Cryptocurrency · Accounting · RegTech
+
+## TaxBit on APIs.io
+
+Everything profiled for TaxBit is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/taxbit/](https://apis.io/providers/taxbit/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [TaxBit API](https://apis.io/apis/taxbit/taxbit-api/) — REST API for tax compliance and information reporting: account owners, accounts, transactions, inventory, realized gains, tax documentation (W-8/W-9),…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Taxbit Webhooks](https://apis.io/asyncapis/taxbit/taxbit-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [taxbit-apidocs](https://apis.io/servers/taxbit/taxbit-apidocs/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Taxbit Authentication](https://apis.io/security/taxbit/taxbit-authentication/)
+- [Taxbit Domain Security](https://apis.io/security/taxbit/taxbit-domain-security/)
+- [Taxbit Trust Center](https://apis.io/security/taxbit/taxbit-trust-center/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://taxbit.com/)
+- [Documentation](https://apidocs.taxbit.com/docs/getting-started)
+- [Getting started](https://apidocs.taxbit.com/docs/getting-started)
+- [API reference](https://apidocs.taxbit.com/reference)
+- [Support](https://taxbitsupport.zendesk.com/)
+- [Blog](https://www.taxbit.com/blogs)
+- [Terms of service](https://www.taxbit.com/terms-of-service)
+- [Privacy policy](https://www.taxbit.com/privacy-policy)
+- [Status](https://status.taxbit.com/)
+
+## API Evangelist rating
+
+**Kin Score 41.1** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.7 |
+| Contract quality | 39.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 47.0 |
+| Access clarity | 36.8 |
+
+**Agent readiness 27.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/taxbit/](https://apis.io/providers/taxbit/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for TaxBit: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/taxbit/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
